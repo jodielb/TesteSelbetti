@@ -34,7 +34,7 @@
 		<script>
 			function checarIdade(){
 				var data = document.getElementById("datanasc").value;
-					data = data.replace(/\//g, "-");
+				data = data.replace(/\//g, "-");
 				var data_array = data.split("-");
 				if(data_array[0].length != 4){
 					data = data_array[2]+"-"+data_array[1]+"-"+data_array[0];
@@ -44,14 +44,14 @@
 				var idade = hoje.getFullYear() - nasc.getFullYear();
 				var m = hoje.getMonth() - nasc.getMonth();
 				if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
-					if(idade < 18){
-						alert("Apenas pessoas maiores de 18 anos podem se cadastrar.");
-						return false;
-					}
-					if(idade >= 18 && idade <= 130){
-						alert(`Inscrição realizada com sucesso! Seja bem vindo ao curso de ${cursos.options[cursos.selectedIndex].text}!`);
-						return true;
-					}
+				if(idade < 18){
+					alert("Apenas pessoas maiores de 18 anos podem se cadastrar.");
+					return false;
+				}
+				if(idade >= 18 && idade <= 130){
+					alert(`Inscrição realizada com sucesso! Seja bem vindo ao curso de ${cursos.options[cursos.selectedIndex].text}!`);
+					return true;
+				}
 				alert("Idade inválida.")
 				return false;
 			}
