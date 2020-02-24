@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title> Inscrição </title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<div class="panel3"><h1>Inscrição</h1></div>
+		<hr class="test">
+		<form action="index.html" method="post" action="Testsave" onsubmit="return checarIdade();">
+			<div class="panel6">
+				<div class="box">
+					<b>Nome Completo*:</b><input class="nome" type="text" id="nome" required /><br><br>
+					<b>E-mail*:</b><input class="email" type="email" id="email" required /><br><br>
+					<b>Data de nascimento*:</b><input class="data" type="date" id="datanasc" required /><br><br>
+					<b>Telefone:</b><input class="telefone" type="text" id="telefone" /><br><br>
+				
+					<label for="cursos"><b>Escolha o curso:</b></label>
+					<select class="cursos" id="cursos">
+						<option value="gastronomia">Gastronomia</option>
+						<option value="enfermagem">Enfermagem</option>
+						<option value="farmacia">Farmácia</option>
+						<option value="desenvol">Densevolvimento de Software</option>
+						<option value="admin">Administração</option>
+					</select><br><br>
+					<div class="pos-confir-volta">
+						<input type="submit" class="btConfirmar" value="Confirmar Inscrição">
+						<a href='index.html'><input type="button" class="btVoltar" value="Voltar"></a>
+					</div>	
+				</div>
+			</div>
+		</form>
+		<script>
+			function checarIdade(){
+				var data = document.getElementById("datanasc").value;
+					data = data.replace(/\//g, "-");
+				var data_array = data.split("-");
+				if(data_array[0].length != 4){
+					data = data_array[2]+"-"+data_array[1]+"-"+data_array[0];
+				}
+				var hoje = new Date();
+				var nasc  = new Date(data);
+				var idade = hoje.getFullYear() - nasc.getFullYear();
+				var m = hoje.getMonth() - nasc.getMonth();
+				if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
+					if(idade < 18){
+						alert("Apenas pessoas maiores de 18 anos podem se cadastrar.");
+						return false;
+					}
+					if(idade >= 18 && idade <= 130){
+						alert(`Inscrição realizada com sucesso! Seja bem vindo ao curso de ${cursos.options[cursos.selectedIndex].text}!`);
+						return true;
+					}
+				alert("Idade inválida.")
+				return false;
+			}
+		</script>
+	</body>
+</html>
